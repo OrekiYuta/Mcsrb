@@ -1,6 +1,6 @@
 package com.elias.mcsrb.service;
 
-import com.elias.mcsrb.entity.MbpTUser;
+import com.elias.mcsrb.entity.TsGciCustBaseInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author OrekiYuta
- * @since 2023-05-08
+ * @since 2023-05-09
  */
-public interface IMbpTUserService extends IService<MbpTUser> {
+public interface ITsGciCustBaseInfoService extends IService<TsGciCustBaseInfo> {
 
 }

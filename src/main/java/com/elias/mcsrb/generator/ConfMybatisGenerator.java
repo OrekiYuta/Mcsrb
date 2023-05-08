@@ -3,7 +3,9 @@ package com.elias.mcsrb.generator;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
+import org.apache.ibatis.annotations.Mapper;
 
+import java.lang.annotation.Annotation;
 import java.sql.Types;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -39,9 +41,10 @@ public class ConfMybatisGenerator {
                 })
 
                 .strategyConfig(builder -> {
-                    builder.addInclude("MBP_T_USER")// 设置需要生成的表名
-                            .addTablePrefix("t_", "c_"); // 设置过滤表前缀
-
+                    builder.addInclude("TS_GCI_GRP_CONTACT,TS_GCI_CUST_BASE_INFO,TS_DEVICE_BIND_DETAIL")// 设置需要生成的表名
+//                            .addTablePrefix("t_", "c_"); // 设置过滤表前缀
+                            .controllerBuilder().enableRestStyle()
+                            .mapperBuilder().mapperAnnotation(Mapper.class);
                 })
 //                .templateEngine(new VelocityTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
 
