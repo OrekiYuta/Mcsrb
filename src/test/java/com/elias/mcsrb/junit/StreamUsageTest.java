@@ -1,4 +1,4 @@
-package com.elias.mcsrb;
+package com.elias.mcsrb.junit;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

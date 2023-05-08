@@ -25,3 +25,12 @@ spring:
 
 hibernate:
   dialect: org.hibernate.community.dialect.SQLiteDialect
+
+debug: true
+logging:
+  level:
+    root: debug
+
+#  pattern:
+#    console: "%d %clr(%p) --- [%16t] %clr(%-40.40c){cyan} : %m %n"
+
