@@ -1,15 +1,28 @@
 
 server:
-  port: 9999
+  port: 2492
 magic-api:
   #配置web页面入口
   web: /magic/web
   resource:
+#    type: database
+#    tableName: magic_api # 数据库中的表名
+#    datasource:  #指定数据源（单数据源时无需配置，多数据源时默认使用主数据源，如果存在其他数据源中需要指定。）
+#    prefix: /magic-api # key前缀
+#    readonly: false # 是否是只读模式
+
     #配置文件存储位置。当以classpath开头时，为只读模式
     #mac用户请改为可读写的目录
     #如果不想存到文件中，可以参考配置将接口信息存到数据库、Redis中（或自定义）
-    location: D:/data/magic-api
+    location: F:/data/magic-api
 
+#  springdoc:
+#    version: 1.0
+#    description: MagicAPI 接口信息
+#    title: MagicAPI Swagger Docs
+#    name: MagicAPI 接口
+#    location: /v2/api-docs/magic-api/swagger2.json
+#    groupName: magic-api
 
 spring:
   datasource:
@@ -31,6 +44,7 @@ logging:
   level:
     root: debug
 
-#  pattern:
+  pattern:
 #    console: "%d %clr(%p) --- [%16t] %clr(%-40.40c){cyan} : %m %n"
-#    %boldGreen(%date{yyyy-MM-dd HH:mm:ss}) | %highlight(%-5level) | %cyan(%thread) | %magenta(%logger) | %n %msg %n%n
+#    console: "%boldGreen(%date{yyyy-MM-dd HH:mm:ss}) | %highlight(%-5level) | %cyan(%thread) | %magenta(%logger) | %n %msg %n%n"
+    console: "%boldGreen(%date{yyyy-MM-dd HH:mm:ss}) | %highlight(%-5level) | %cyan(%thread) | %magenta(%logger) | %msg %n%n"
