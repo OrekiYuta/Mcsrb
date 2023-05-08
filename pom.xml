@@ -70,12 +70,29 @@
             <artifactId>hibernate-community-dialects</artifactId>
             <version>6.1.7.Final</version>
         </dependency>
-
-<!-- add mybatis plus orm 20230508-->
+<!-- add mybatis plus orm 20230507-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.5.3.1</version>
+        </dependency>
+<!-- add mybatis plus generator 20230508-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.5.3.1</version>
+        </dependency>
+<!-- add mybatis plus velocity template engine  20230508-->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.3</version>
+        </dependency>
+<!-- add swagger  20230508-->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.6.2</version>
         </dependency>
 
     </dependencies>

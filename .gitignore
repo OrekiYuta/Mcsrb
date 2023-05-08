@@ -40,3 +40,5 @@ build/
 mvnw
 mvnw.cmd
 /src/main/resources/db/mcsrb.db
+/src/main/java/com/elias/mcsrb/generatorOutput/
+/.run/
