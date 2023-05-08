@@ -1,3 +1,4 @@
 # DB-Schema desc
 
-- MP-T-USER : MybatisPlus-Test-User
+- TS : Test 
+- TS_* : test data table
