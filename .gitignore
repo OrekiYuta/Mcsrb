@@ -19,9 +19,7 @@ target/
 *.iml
 *.ipr
 
-.mvn
-mvnw
-mvnw.cmd
+
 
 ### NetBeans ###
 /nbproject/private/
@@ -35,3 +33,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### My Setting ###
+
+.mvn
+mvnw
+mvnw.cmd
+/src/main/resources/db/mcsrb.db
