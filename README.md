@@ -8,4 +8,8 @@ Michishirube / ミチシルベ
 
 ## Branch
 
-![branch-flow](https://raw.githubusercontent.com/OrekiYuta/Mcsrb/main/src/main/resources/static/img/excal-branch-flow-2023-05-20-0840.svg)
+- Note: sub-branches rebase on master, master merges sub-branches.
+- I think rebase should only in local(private) branch , never in public branch.
+- Always using merge also is a way , it could watch a full timeline.
+
+![branch-flow](https://raw.githubusercontent.com/OrekiYuta/Mcsrb/main/src/main/resources/static/img/BranchFlow-2023-05-29-17.49.52.excalidraw.svg)
