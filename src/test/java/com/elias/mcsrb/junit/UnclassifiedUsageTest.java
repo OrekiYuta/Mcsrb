@@ -21,6 +21,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author OrekiYuta
  * @description Unclassified simple code usage
@@ -61,8 +62,10 @@ public class UnclassifiedUsageTest {
         Objects.requireNonNull(integer);
 
         Integer integerNull = null;
-        Objects.requireNonNull(integerNull, "Parameter cannot be empty");
+//        Objects.requireNonNull(integerNull, "Parameter cannot be empty");
 //        Objects.requireNonNull(integerNull, () -> "Parameter cannot be empty");
+        assertThrows(NullPointerException.class, () -> Objects.requireNonNull(integerNull, "Parameter cannot be empty"));
+
     }
 
     /**
@@ -205,15 +208,22 @@ public class UnclassifiedUsageTest {
         Assert.isNull(flag, "flag is null");
         Assert.isNull(flag, () -> "flag is null");
         Assert.notNull(base, "base is not null");
-
+        
         ArrayList<String> arrayList = Lists.newArrayList();
         Map<String, String> map = null;
-        Assert.notEmpty(arrayList, "list is not null");
-        Assert.notEmpty(arrayList, () -> "list is not null");
-        Assert.notEmpty(map, "map is not null");
+//        Assert.notEmpty(arrayList, "list is not null");
+//        Assert.notEmpty(arrayList, () -> "list is not null");
+//        Assert.notEmpty(map, "map is not null");
 
-        Assert.isTrue(CollectionUtils.isNotEmpty(arrayList), "list is not null");
-        Assert.isTrue(CollectionUtils.isNotEmpty(arrayList), () -> "list is not null");
+        assertThrows(IllegalArgumentException.class, () -> Assert.notEmpty(arrayList, "list is not null"));
+        assertThrows(IllegalArgumentException.class, () -> Assert.notEmpty(arrayList, () -> "list is not null"));
+        assertThrows(IllegalArgumentException.class, () -> Assert.notEmpty(map, "map is not null"));
+
+//        Assert.isTrue(CollectionUtils.isNotEmpty(arrayList), "list is not null");
+//        Assert.isTrue(CollectionUtils.isNotEmpty(arrayList), () -> "list is not null");
+
+        assertThrows(IllegalArgumentException.class, () -> Assert.isTrue(CollectionUtils.isNotEmpty(arrayList), "list is not null"));
+        assertThrows(IllegalArgumentException.class, () -> Assert.isTrue(CollectionUtils.isNotEmpty(arrayList), () -> "list is not null"));
     }
 
 

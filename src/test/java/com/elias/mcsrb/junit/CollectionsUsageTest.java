@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 /**
  * @author OrekiYuta
  * @description Collections Usage
@@ -99,7 +101,8 @@ public class CollectionsUsageTest {
         List<Integer> integerList = Arrays.asList(2, 3, 4, 5, 9, 7, 8);
         Collections.unmodifiableList(integerList);
         log.debug("{}", integerList);
-        integerList.add(6);
+//        integerList.add(6);
+        assertThrows(UnsupportedOperationException.class, () -> integerList.add(6));
         log.debug("{}", integerList);
     }
 
