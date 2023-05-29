@@ -16,6 +16,11 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * @author OrekiYuta
+ * @description MybatisPlus Usage
+ * @date 2023/5/24 18:04:55
+ */
 @SpringBootTest
 @Slf4j
 public class MybatisPlusTest {
@@ -23,6 +28,12 @@ public class MybatisPlusTest {
     @Autowired
     TsDeviceBindDetailMapper tsDeviceBindDetailMapper;
 
+    /**
+     * @return void
+     * @description Try to run MybatisPlus
+     * @author OrekiYuta
+     * @date 2023/5/24 18:05:33
+     */
     @Test
     public void testMybatisPlusFirstRun() {
         log.info("Start: Test MybatisPlus first run");
