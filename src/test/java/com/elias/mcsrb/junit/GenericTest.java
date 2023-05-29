@@ -20,7 +20,7 @@ public class GenericTest {
      * @date 2023/5/24 18:07:58
      */
     @Test
-    public void springVersionInfo() {
+    public void testSpringVersionInfo() {
         String springVersion = SpringVersion.getVersion();
         String springBootVersion = SpringBootVersion.getVersion();
         log.info("Spring -v " + springVersion);
