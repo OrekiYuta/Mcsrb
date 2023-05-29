@@ -1,12 +1,11 @@
 package com.elias.mcsrb.junit;
 
+import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author OrekiYuta
@@ -101,6 +100,104 @@ public class CollectionsUsageTest {
         log.debug("{}", integerList);
         integerList.add(6);
         log.debug("{}", integerList);
+    }
+
+    /**
+     * @return void
+     * @description org.springframework.util.CollectionUtils / 非空校验
+     * @author OrekiYuta
+     * @date 2023/5/29 11:17:56
+     */
+    @Test
+    public void testCollectionsEmpty() {
+        List<Integer> integerList = Arrays.asList(2, 3, 4, 5, 9, 7, 8);
+        boolean flag = org.springframework.util.CollectionUtils.isEmpty(integerList);
+        log.debug("{}", flag);
+
+    }
+
+    /**
+     * @return void
+     * @description org.apache.commons.collections.CollectionUtils / List 合并操作
+     * @author OrekiYuta
+     * @date 2023/5/29 11:28:13
+     */
+    @Test
+    public void testCollectionsHandle() {
+        List<Integer> leftList = Arrays.asList(2, 3, 4, 5, 9, 7, 8);
+        List<Integer> rightList = Arrays.asList(2, 3, 1, 0);
+
+        //获取并集
+        Collection<Integer> unionList = CollectionUtils.union(leftList, rightList);
+        log.debug("{}", unionList);
+
+        //获取交集
+        Collection<Integer> intersectionList = CollectionUtils.intersection(leftList, rightList);
+        log.debug("{}", intersectionList);
+
+        //获取交集的补集
+        Collection<Integer> disjunctionList = CollectionUtils.disjunction(leftList, rightList);
+        log.debug("{}", disjunctionList);
+
+        //获取差集
+        Collection<Integer> subtractList = CollectionUtils.subtract(leftList, rightList);
+        log.debug("{}", subtractList);
+    }
+
+
+    /**
+     * @return void
+     * @description com.google.common.collect.Lists / 大集合分成若干个小集合
+     * @author OrekiYuta
+     * @date 2023/5/29 11:53:01
+     */
+    @Test
+    public void testCollectionsNewList() {
+        ArrayList<Integer> integerArrayList = Lists.newArrayList(2, 3, 1, 0);
+        log.debug("{}", integerArrayList);
+        List<List<Integer>> partitionFi = Lists.partition(integerArrayList, 2);
+        log.debug("{}", partitionFi);
+        List<List<Integer>> partitionSe = Lists.partition(integerArrayList, 3);
+        log.debug("{}", partitionSe);
+        List<List<Integer>> partitionTh = Lists.partition(integerArrayList, 4);
+        log.debug("{}", partitionTh);
+        List<List<Integer>> partitionFo = Lists.partition(integerArrayList, 5);
+        log.debug("{}", partitionFo);
+    }
+
+
+    /**
+     * @return void
+     * @description com.google.common.collect.Lists / List 按要求转换成需要的 List
+     * @author OrekiYuta
+     * @date 2023/5/29 12:03:22
+     */
+    @Test
+    public void testCollectionsListTransform() {
+        ArrayList<String> stringArrayList = Lists.newArrayList("a", "b", "c", "d");
+        log.debug("{}", stringArrayList);
+        List<String> stringTransform = Lists.transform(stringArrayList, x -> x.toUpperCase());
+        log.debug("{}", stringTransform);
+
+        ArrayList<Integer> integerArrayList = Lists.newArrayList(2, 3, 1, 0);
+        log.debug("{}", integerArrayList);
+        List<Integer> integerTransform = Lists.transform(integerArrayList, x -> x + 2);
+        log.debug("{}", integerTransform);
+    }
+
+
+    /**
+     * @return void
+     * @description com.google.common.collect.Lists / List 反转顺序
+     * @author OrekiYuta
+     * @date 2023/5/29 12:05:20
+     */
+    @Test
+    public void testCollectionsReverse() {
+        ArrayList<Integer> integerArrayList = Lists.newArrayList(2, 3, 1, 0);
+        log.debug("{}", integerArrayList);
+        List<Integer> reverseList = Lists.reverse(integerArrayList);
+        log.debug("{}", reverseList);
     }
 
     //template

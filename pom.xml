@@ -95,11 +95,19 @@
             <version>1.6.2</version>
         </dependency>
         <!-- add magic-api spring doc 20230508 -->
-<!--        <dependency>-->
-<!--            <groupId>org.ssssssss</groupId>-->
-<!--            <artifactId>magic-api-plugin-springdoc</artifactId>-->
-<!--            <version>2.1.0</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.ssssssss</groupId>-->
+        <!--            <artifactId>magic-api-plugin-springdoc</artifactId>-->
+        <!--            <version>2.1.0</version>-->
+        <!--        </dependency>-->
+        <!-- add com.google.guava 20230529 -->
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>32.0.0-jre</version>
+        </dependency>
+
     </dependencies>
 
 
