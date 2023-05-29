@@ -1,13 +1,25 @@
 package com.elias.mcsrb.junit;
 
+import com.elias.mcsrb.entity.TsDeviceBindDetail;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.BeanUtils;
+import org.springframework.util.Assert;
+import org.springframework.util.SerializationUtils;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.beans.PropertyDescriptor;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 /**
  * @author OrekiYuta
@@ -178,6 +190,159 @@ public class UnclassifiedUsageTest {
         List<Integer> listRight = Lists.newArrayList(1, 2, 3);
         log.debug("{}", StringUtils.join(listLeft, ","));
         log.debug("{}", StringUtils.join(listRight, " "));
+    }
+
+    /**
+     * @return void
+     * @description org.springframework.util.Assert / 断言抛出异常
+     * @author OrekiYuta
+     * @date 2023/5/29 15:12:46
+     */
+    @Test
+    public void testAssert() {
+        String flag = null;
+        String base = "hello";
+        Assert.isNull(flag, "flag is null");
+        Assert.isNull(flag, () -> "flag is null");
+        Assert.notNull(base, "base is not null");
+
+        ArrayList<String> arrayList = Lists.newArrayList();
+        Map<String, String> map = null;
+        Assert.notEmpty(arrayList, "list is not null");
+        Assert.notEmpty(arrayList, () -> "list is not null");
+        Assert.notEmpty(map, "map is not null");
+
+        Assert.isTrue(CollectionUtils.isNotEmpty(arrayList), "list is not null");
+        Assert.isTrue(CollectionUtils.isNotEmpty(arrayList), () -> "list is not null");
+    }
+
+
+    /**
+     * @return void
+     * @description org.springframework.beans.BeanUtils / 对象属性复制
+     * @author OrekiYuta
+     * @date 2023/5/29 15:42:19
+     */
+    @Test
+    public void testBeanCopy() throws InvocationTargetException, IllegalAccessException {
+        TsDeviceBindDetail sourceBean = new TsDeviceBindDetail();
+        sourceBean.setId(UUID.randomUUID().toString());
+        sourceBean.setDeviceBindId(UUID.randomUUID().toString());
+        sourceBean.setDeviceId(UUID.randomUUID().toString());
+        sourceBean.setDeviceName("Test");
+        sourceBean.setDeviceModel("ADB");
+        sourceBean.setCreateTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        sourceBean.setDelFlag("Y");
+
+        TsDeviceBindDetail targetBean = new TsDeviceBindDetail();
+//        org.apache.commons.beanutils.BeanUtils
+//        BeanUtils.copyProperties(targetBean, sourceBean);
+
+//        两个包方法参数位置不同
+//        org.springframework.beans.BeanUtils
+        BeanUtils.copyProperties(sourceBean, targetBean);
+        log.debug("{}", targetBean.getId());
+    }
+
+
+    /**
+     * @return void
+     * @description org.springframework.beans / BeanUtils 获取类属性操作
+     * @author OrekiYuta
+     * @date 2023/5/29 16:19:18
+     */
+    @Test
+    public void testBeanHandle() {
+//        实例化类
+        TsDeviceBindDetail tsDeviceBindDetail = BeanUtils.instantiateClass(TsDeviceBindDetail.class);
+        log.debug("{}", tsDeviceBindDetail);
+
+//        获取类指定方法
+        Method method = BeanUtils.findDeclaredMethod(TsDeviceBindDetail.class, "getId");
+        log.debug("{}", method.getName());
+
+//        获取类指定方法的参数
+        PropertyDescriptor propertyForMethod = BeanUtils.findPropertyForMethod(method);
+        log.debug("{}", propertyForMethod.getName());
+
+        Method methodB = BeanUtils.findDeclaredMethod(TsDeviceBindDetail.class, "getDeviceName");
+        PropertyDescriptor propertyForMethodB = BeanUtils.findPropertyForMethod(methodB);
+        log.debug("{}", propertyForMethodB.getName());
+    }
+
+
+    /**
+     * @return void
+     * @description java.util.Base64 / Base64 encode decode
+     * @author OrekiYuta
+     * @date 2023/5/29 16:33:26
+     */
+    @Test
+    public void testBase64Encode() throws UnsupportedEncodingException {
+        String str = "elias.meta";
+        log.debug("{}", "origin：" + str);
+//        String encode = new String(Base64Utils.encode(str.getBytes()));
+        String encodeToString = Base64.getEncoder().encodeToString(str.getBytes());
+        log.debug("{}", "encode：" + encodeToString);
+
+//        String decode = new String(Base64Utils.decode(encode.getBytes()), "utf8");
+        byte[] decode = Base64.getDecoder().decode(encodeToString);
+//        String decodeToString = new String(decode, "UTF-8");
+
+//        java.nio.charset.StandardCharsets
+        String decodeToString = new String(decode, StandardCharsets.UTF_8);
+        log.debug("{}", "decode：" + decodeToString);
+
+    }
+
+
+    /**
+     * @return void
+     * @description org.apache.commons.codec.digest.DigestUtils / Md5Hex
+     * @author OrekiYuta
+     * @date 2023/5/29 16:45:12
+     */
+    @Test
+    public void testMd5Hex() {
+        String flag = "Metabako";
+        String md5Hex = DigestUtils.md5Hex(flag);
+        log.debug("{}", md5Hex);
+    }
+
+    /**
+     * @return void
+     * @description org.apache.commons.codec.digest.DigestUtils / Sha256Hex
+     * @author OrekiYuta
+     * @date 2023/5/29 16:45:32
+     */
+    @Test
+    public void testSha256Hex() {
+        String flag = "Metabako";
+        String sha256Hex = DigestUtils.sha256Hex(flag);
+        log.debug("{}", sha256Hex);
+    }
+
+
+    /**
+     * @return void
+     * @description org.springframework.util.SerializationUtils / 序列化
+     * @author OrekiYuta
+     * @date 2023/5/29 17:03:04
+     */
+    @Test
+    public void testSerialize() {
+        Map<String, String> map = Maps.newHashMap();
+        map.put("a", "1");
+        map.put("b", "2");
+        map.put("c", "3");
+
+        byte[] serialize = SerializationUtils.serialize(map);
+        log.debug("{}", serialize);
+        Object deserialize = SerializationUtils.deserialize(serialize);
+        log.debug("{}", deserialize);
+
+        Object deserializeApache = org.apache.commons.lang3.SerializationUtils.deserialize(serialize);
+        log.debug("{}", deserializeApache);
     }
 
     //template

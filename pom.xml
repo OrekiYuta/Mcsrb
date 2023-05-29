@@ -100,12 +100,21 @@
         <!--            <artifactId>magic-api-plugin-springdoc</artifactId>-->
         <!--            <version>2.1.0</version>-->
         <!--        </dependency>-->
+
         <!-- add com.google.guava 20230529 -->
         <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>32.0.0-jre</version>
+        </dependency>
+
+        <!-- add commons-codec 20230529 -->
+        <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version>
         </dependency>
 
     </dependencies>
