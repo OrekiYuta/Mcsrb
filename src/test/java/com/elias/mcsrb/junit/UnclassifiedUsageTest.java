@@ -37,7 +37,7 @@ public class UnclassifiedUsageTest {
      * @date 2023/5/29 12:24:04
      */
     @Test
-    public void ObjectIsNullTest() {
+    public void testObjectIsNullTest() {
 //        Integer integer = new Integer(1);
         Integer integer = Integer.valueOf(1);
         if (Objects.isNull(integer)) {
@@ -56,7 +56,7 @@ public class UnclassifiedUsageTest {
      * @date 2023/5/29 12:28:22
      */
     @Test
-    public void ObjectIsNullThrow() {
+    public void testObjectIsNullThrow() {
 //        Integer integer = new Integer(128);
         Integer integer = Integer.valueOf(128);
         Objects.requireNonNull(integer);
@@ -75,7 +75,7 @@ public class UnclassifiedUsageTest {
      * @date 2023/5/29 12:32:03
      */
     @Test
-    public void ObjectEquals() {
+    public void testObjectEquals() {
         Integer integerBase = Integer.valueOf(1);
         Integer integerLeft = Integer.valueOf(3);
         Integer integerRight = Integer.valueOf(1);
@@ -97,7 +97,7 @@ public class UnclassifiedUsageTest {
      * @date 2023/5/29 12:34:12
      */
     @Test
-    public void ObjectGetHashCode() {
+    public void testObjectGetHashCode() {
         List<Integer> integerList = Arrays.asList(2, 3, 4, 5, 9, 7, 8);
         int hashCode = Objects.hashCode(integerList);
         log.debug("{}", hashCode);
@@ -110,7 +110,7 @@ public class UnclassifiedUsageTest {
      * @date 2023/5/29 13:10:27
      */
     @Test
-    public void StringIsNull() {
+    public void testStringIsNull() {
         String strNull = null;
         String strA = "";
         String strB = " ";
@@ -146,7 +146,7 @@ public class UnclassifiedUsageTest {
      * @date 2023/5/29 13:19:51
      */
     @Test
-    public void StringSplit() {
+    public void testStringSplit() {
         String strBase = null;
 //        Implicit call to 'toString()' on array returned by call to 'StringUtils.split(strBase, ",")'
         String[] splitBase = StringUtils.split(strBase, ",");
@@ -171,7 +171,7 @@ public class UnclassifiedUsageTest {
      * @date 2023/5/29 13:21:35
      */
     @Test
-    public void StringIsNumeric() {
+    public void testStringIsNumeric() {
         String strA = "123";
         String strB = "123q";
         String strC = "0.33";
@@ -188,7 +188,7 @@ public class UnclassifiedUsageTest {
      * @date 2023/5/29 13:23:52
      */
     @Test
-    public void StringJoin() {
+    public void testStringJoin() {
         List<String> listLeft = Lists.newArrayList("a", "b", "c");
         List<Integer> listRight = Lists.newArrayList(1, 2, 3);
         log.debug("{}", StringUtils.join(listLeft, ","));
