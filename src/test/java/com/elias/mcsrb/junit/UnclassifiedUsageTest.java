@@ -1,4 +1,4 @@
-package com.elias.mcsrb.junit;
+package java.com.elias.mcsrb.junit;
 
 import com.elias.mcsrb.entity.TsDeviceBindDetail;
 import com.google.common.collect.Lists;

@@ -1,4 +1,4 @@
-package com.elias.mcsrb.junit;
+package java.com.elias.mcsrb.junit;
 
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;

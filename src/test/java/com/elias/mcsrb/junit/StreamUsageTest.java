@@ -1,4 +1,4 @@
-package com.elias.mcsrb.junit;
+package java.com.elias.mcsrb.junit;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,4 +17,3 @@ public class StreamUsageTest {
         System.out.println("111");
     }
 }
-
