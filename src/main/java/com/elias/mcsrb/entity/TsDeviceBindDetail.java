@@ -1,20 +1,13 @@
 package com.elias.mcsrb.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author OrekiYuta
- * @since 2023-05-09
- */
+import java.io.Serializable;
+
+
 @TableName("TS_DEVICE_BIND_DETAIL")
-@ApiModel(value = "TsDeviceBindDetail对象", description = "")
+@ApiModel(value = "TsDeviceBindDetail", description = "")
 public class TsDeviceBindDetail implements Serializable {
 
     private static final long serialVersionUID = 1L;
