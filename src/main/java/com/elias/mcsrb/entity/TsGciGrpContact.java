@@ -1,20 +1,13 @@
 package com.elias.mcsrb.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author OrekiYuta
- * @since 2023-05-09
- */
+import java.io.Serializable;
+
+
 @TableName("TS_GCI_GRP_CONTACT")
-@ApiModel(value = "TsGciGrpContact对象", description = "")
+@ApiModel(value = "TsGciGrpContact", description = "")
 public class TsGciGrpContact implements Serializable {
 
     private static final long serialVersionUID = 1L;
