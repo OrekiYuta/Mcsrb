@@ -1,4 +1,4 @@
-package java.com.elias.mcsrb.junit;
+package com.elias.mcsrb.junit;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;

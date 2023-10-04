@@ -1,4 +1,4 @@
-package java.com.elias.mcsrb.junit;
+package com.elias.mcsrb.junit;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
